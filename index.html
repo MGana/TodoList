@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="css/base.css">
     </head>
 
-    <body> 
+    <body ng-app> 
 
-    	<section id="totoapp">
+    	<section id="todoapp" ng-controller="TodoCtrl">
 
     		<header id="header">
     			<h1>TodoList</h1>
@@ -19,37 +19,24 @@
 
     		<section id="main">
     			<ul id="todo-list">
-    				<li>
-    					<div class="view">
-    						<input type="checkbox" class="toggle">
-    						<label>Etendre le linge</label>
-    						<button class="destroy"></button>
-    					</div>
-    					<form action="">
-    						<input  class="edit" value="Etendre le linge">
-    					</form>
-    				</li>
-                    <li class="completed">
+                    <li ng-repeat="todo in todos" ng-class="{completed : todo.completed}">
                         <div class="view">
-                            <input type="checkbox" class="toggle">
-                            <label>Etendre le linge</label>
-                            <button class="destroy"></button>
+                            <input type="checkbox" class="toggle" ng-model="todo.completed">
+                            <label>{{todo.name}}</label>
+                            <button class="destroy" ng-click="removeTodo($index)"></button>
                         </div>
-                        <form action="">
-                            <input  class="edit" value="Etendre le linge">
-                        </form>
                     </li>
-
     			</ul>
     		</section>
 
 	    	<footer id="footer">
-	    		<span id="todo-count"><strong>3</strong> Taches restantes</span>
+	    		<span id="todo-count"><strong>{{remaining}}</strong> Taches restantes</span>
 	    	</footer>
 
     	</section>
 
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
 
     </body>
 
