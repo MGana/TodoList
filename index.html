@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1998/xhtml" xml:lang = "fr" lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+        <title></title>        
+        <link rel="stylesheet" href="css/base.css">
+    </head>
+
+    <body> 
+
+    	<section id="totoapp">
+
+    		<header id="header">
+    			<h1>TodoList</h1>
+    			<form  id="todo-form" >
+    				<input type="text" id="new-todo" placeholder="Nouvelle tache" autofocus autocomplete="off">
+    			</form>
+    		</header>
+
+    		<section id="main">
+    			<ul id="todo-list">
+    				<li>
+    					<div class="view">
+    						<input type="checkbox" class="toggle">
+    						<label>Etendre le linge</label>
+    						<button class="destroy"></button>
+    					</div>
+    					<form action="">
+    						<input  class="edit" value="Etendre le linge">
+    					</form>
+    				</li>
+                    <li class="completed">
+                        <div class="view">
+                            <input type="checkbox" class="toggle">
+                            <label>Etendre le linge</label>
+                            <button class="destroy"></button>
+                        </div>
+                        <form action="">
+                            <input  class="edit" value="Etendre le linge">
+                        </form>
+                    </li>
+
+    			</ul>
+    		</section>
+
+	    	<footer id="footer">
+	    		<span id="todo-count"><strong>3</strong> Taches restantes</span>
+	    	</footer>
+
+    	</section>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+
+    </body>
+
+</html>
