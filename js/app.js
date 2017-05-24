@@ -8,9 +8,19 @@ function TodoCtrl ($scope) {
 		{"name" : "Reviser", "completed" : false}
 	];
 
-	//delete task
+	//Delete task
 	$scope.removeTodo = function (index) {
 		$scope.todos.splice(index,1);
+	}
+
+	//Add task
+	$scope.addTodo =function () {
+		$scope.todos.push({
+			name : $scope.newtodo,
+			completed : false
+		})
+		//Empty form field
+		$scope.newtodo = "";
 	}
 
 

@@ -12,8 +12,8 @@
 
     		<header id="header">
     			<h1>TodoList</h1>
-    			<form  id="todo-form" >
-    				<input type="text" id="new-todo" placeholder="Nouvelle tache" autofocus autocomplete="off">
+    			<form  id="todo-form" ng-submit="addTodo()">
+    				<input type="text" id="new-todo" placeholder="Nouvelle tache" autofocus autocomplete="off" ng-model="newtodo">
     			</form>
     		</header>
 
