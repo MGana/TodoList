@@ -1,5 +1,5 @@
 
-function TodoCtrl ($scope) {
+function TodoCtrl ($scope , filterFilter) {
 
 	$scope.todos = [
 		{"name" : "Tache incomplete", "completed" : false},
@@ -7,6 +7,21 @@ function TodoCtrl ($scope) {
 		{"name" : "Apprendre", "completed" : false},
 		{"name" : "Reviser", "completed" : false}
 	];
+
+	//count remaining tasks
+	$scope.$watch('todos' , function() {
+		$scope.remaining = filterFilter($scope.todos, {completed:false}).length;
+		//In case of all tasks are manually checked
+		$scope.allchecked = !$scope.remaining;
+	}, true)	
+
+	//Check All tatsks
+	$scope.checkAllTodo = function (allchecked) {
+		$scope.todos.forEach(function(todo){
+			todo.completed = allchecked;
+		})
+	}
+
 
 	//Delete task
 	$scope.removeTodo = function (index) {

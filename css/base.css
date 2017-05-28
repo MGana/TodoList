@@ -119,6 +119,27 @@ label[for='toggle-all'] {
 }
 
 
+#toggle-all {
+	position: absolute;
+	top: -55px;
+	left: -12px;
+	width: 60px;
+	height: 34px;
+	text-align: center;
+	border: none; /* Mobile Safari */
+}
+
+#toggle-all:before {
+	content: '❯';
+	font-size: 22px;
+	color: #e6e6e6;
+	padding: 10px 27px 10px 27px;
+}
+
+#toggle-all:checked:before {
+	color: #737373;
+}
+
 
 #todo-list {
 	margin: 0;
@@ -259,3 +280,35 @@ label[for='toggle-all'] {
 
 
 
+
+/*
+	Hack to remove background from Mobile Safari.
+	Can't use it globally since it destroys checkboxes in Firefox
+*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#toggle-all,
+	#todo-list li .toggle {
+		background: none;
+	}
+
+	#todo-list li .toggle {
+		height: 40px;
+	}
+
+	#toggle-all {
+		-webkit-transform: rotate(90deg);
+		transform: rotate(90deg);
+		-webkit-appearance: none;
+		appearance: none;
+	}
+}
+
+@media (max-width: 430px) {
+	#footer {
+		height: 50px;
+	}
+
+	#filters {
+		bottom: 10px;
+	}
+}
