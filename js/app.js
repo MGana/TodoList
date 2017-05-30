@@ -1,5 +1,15 @@
 
-function TodoCtrl ($scope , filterFilter, $http) {
+var app = angular.module('todo', []);
+
+app.directive('ngBlur' , function(){
+	return function(scope, elem, attrs){
+		elem.bind('blur', function() {
+			scope.$apply(attrs.ngBlur);
+		})
+	}
+})
+
+app.controller('TodoCtrl' , function ($scope , filterFilter, $http) {
 
 	$scope.todos = [];
 	$scope.placeholder = "Chargement ..."
@@ -41,5 +51,10 @@ function TodoCtrl ($scope , filterFilter, $http) {
 		$scope.newtodo = "";
 	}
 
+	//Edit task
+	$scope.editTodo = function (todo) {
+		todo.editing = false ;
+	}
 
-};
+
+});
