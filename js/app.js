@@ -9,10 +9,11 @@ app.directive('ngBlur' , function(){
 	}
 })
 
-app.controller('TodoCtrl' , function ($scope , filterFilter, $http) {
+app.controller('TodoCtrl' , function ($scope , filterFilter, $http , $location) {
 
 	$scope.todos = [];
 	$scope.placeholder = "Chargement ..."
+	$scope.statusFilter = {};
 
 	//Get data with AJAX
 	$http.get('todos.php').success( function(data){
@@ -55,6 +56,16 @@ app.controller('TodoCtrl' , function ($scope , filterFilter, $http) {
 	$scope.editTodo = function (todo) {
 		todo.editing = false ;
 	}
+
+	//Filter tasks by status
+	if ($location.path() == '' ) { $location.path('/') };
+	$scope.location = $location;
+	$scope.$watch('location.path()', function (path){
+		$scope.statusFilter = 
+			(path =='/active') ? {completed:false} :
+			(path=='/done') ? {completed:true} :
+			null;
+	})
 
 
 });
