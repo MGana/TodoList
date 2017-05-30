@@ -1,12 +1,15 @@
 
-function TodoCtrl ($scope , filterFilter) {
+function TodoCtrl ($scope , filterFilter, $http) {
 
-	$scope.todos = [
-		{"name" : "Tache incomplete", "completed" : false},
-		{"name" : "Tache complete", "completed" : true},
-		{"name" : "Apprendre", "completed" : false},
-		{"name" : "Reviser", "completed" : false}
-	];
+	$scope.todos = [];
+	$scope.placeholder = "Chargement ..."
+
+	//Get data with AJAX
+	$http.get('todos.php').success( function(data){
+		$scope.todos = data;
+		$scope.placeholder = "Ajouter une nouvelle tache"
+	})
+
 
 	//count remaining tasks
 	$scope.$watch('todos' , function() {
